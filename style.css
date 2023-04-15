@@ -2,3 +2,27 @@
   margin: 0;
   padding: 0;
 }
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 200px 1fr;
+}
+
+.header {
+  background-color: antiquewhite;
+}
+
+.todo {
+  background-color: aquamarine;
+}
+
+.sidebar {
+  background-color: cadetblue;
+  grid-area: 1 / 1 / -1 / 2;
+}
