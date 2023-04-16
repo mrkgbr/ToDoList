@@ -4,12 +4,12 @@ export default function createStructure() {
   createSidebar();
   createHeader();
   createTodo();
+  createForm();
 }
 
 function createHeader() {
   const div = document.createElement("div");
   div.classList.add("header");
-  div.textContent = "This is the header"; // for testing
   body.appendChild(div);
 }
 
@@ -25,4 +25,56 @@ function createSidebar() {
   div.classList.add("sidebar");
   div.textContent = "This is the sidebar"; // for testing
   body.appendChild(div);
+}
+
+function createForm() {
+  // add container div
+  const container = document.createElement("div");
+  container.classList.add("form-container");
+  container.classList.add("hidden");
+  body.appendChild(container);
+  // add container div
+  const main = document.createElement("div");
+  main.classList.add("form-main");
+  // container.classList.add("hidden");
+  container.appendChild(main);
+
+  // add form
+  const form = document.createElement("form");
+  form.classList.add("form");
+  main.appendChild(form);
+
+  // add task name
+  const taskLabel = document.createElement("label");
+  taskLabel.setAttribute("for", "task");
+  taskLabel.textContent = "Task Title";
+  form.appendChild(taskLabel);
+  const task = document.createElement("input");
+  task.setAttribute("type", "text");
+  task.setAttribute("id", "task");
+  task.setAttribute("name", "task");
+  form.appendChild(task);
+
+  // add description
+  const descriptionLabel = document.createElement("label");
+  descriptionLabel.setAttribute("for", "description");
+  descriptionLabel.textContent = "Description";
+  form.appendChild(descriptionLabel);
+  const description = document.createElement("textarea");
+  description.setAttribute("id", "description");
+  description.setAttribute("name", "description");
+  description.setAttribute("rows", "6");
+  description.setAttribute("maxlength", "200");
+  form.appendChild(description);
+
+  // add date
+  const datumLabel = document.createElement("label");
+  datumLabel.setAttribute("for", "datum");
+  datumLabel.textContent = "Due date";
+  form.appendChild(datumLabel);
+  const datum = document.createElement("input");
+  datum.setAttribute("type", "date");
+  datum.setAttribute("id", "datum");
+  datum.setAttribute("name", "datum");
+  form.appendChild(datum);
 }
