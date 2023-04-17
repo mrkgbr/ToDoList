@@ -2,16 +2,16 @@ const body = document.querySelector("body");
 
 export default function createStructure() {
   createSidebar();
-  createHeader();
+  // createHeader();
   createTodo();
   createForm();
 }
 
-function createHeader() {
-  const div = document.createElement("div");
-  div.classList.add("header");
-  body.appendChild(div);
-}
+// function createHeader() {
+//   const div = document.createElement("div");
+//   div.classList.add("header");
+//   body.appendChild(div);
+// }
 
 function createTodo() {
   const div = document.createElement("div");
@@ -23,8 +23,12 @@ function createTodo() {
 function createSidebar() {
   const div = document.createElement("div");
   div.classList.add("sidebar");
-  div.textContent = "This is the sidebar"; // for testing
   body.appendChild(div);
+
+  const newButton = document.createElement("button");
+  newButton.classList.add("new-button");
+  newButton.textContent = "Create Task";
+  div.appendChild(newButton);
 }
 
 function createForm() {
@@ -53,6 +57,8 @@ function createForm() {
   task.setAttribute("type", "text");
   task.setAttribute("id", "task");
   task.setAttribute("name", "task");
+  task.setAttribute("placeholder", "e.g. walk the dog");
+  task.setAttribute("required", "");
   form.appendChild(task);
 
   // add description
@@ -77,4 +83,15 @@ function createForm() {
   datum.setAttribute("id", "datum");
   datum.setAttribute("name", "datum");
   form.appendChild(datum);
+  // add button
+  const addButton = document.createElement("input");
+  addButton.setAttribute("type", "submit");
+  addButton.setAttribute("id", "submit");
+  addButton.setAttribute("value", "Add");
+  form.appendChild(addButton);
+  // cancel button
+  const cancelButton = document.createElement("button");
+  cancelButton.setAttribute("id", "cancel");
+  cancelButton.textContent = "Cancel";
+  form.appendChild(cancelButton);
 }

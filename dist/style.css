@@ -12,7 +12,7 @@ body {
   min-height: 100svh;
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 200px 1fr;
+  /* grid-template-rows: 200px 1fr; */
 }
 
 .header {
@@ -25,7 +25,7 @@ body {
 
 .sidebar {
   background-color: cadetblue;
-  grid-area: 1 / 1 / -1 / 2;
+  /* grid-area: 1 / 1 / -1 / 2; */
 }
 
 .form-container {
@@ -50,6 +50,11 @@ form {
   max-width: 300px;
 }
 
+input,
+button {
+  padding: 5px;
+}
+
 textarea {
   resize: none;
   padding: 5px;
@@ -60,4 +65,19 @@ textarea {
   background-color: azure;
   width: 300px;
   border-radius: 1rem;
+}
+
+.new-button {
+  color: white;
+  background-color: green;
+}
+
+#submit {
+  background-color: green;
+  color: white;
+}
+
+#cancel {
+  background-color: red;
+  color: white;
 }
