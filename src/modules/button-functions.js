@@ -1,3 +1,5 @@
+import { toDo } from "./todo";
+
 export default function buttonFunctions() {
   cancelFunction();
   addFunction();
@@ -27,7 +29,10 @@ function addFunction() {
     e.preventDefault();
     const formContainer = document.querySelector(".form-container");
     formContainer.classList.toggle("hidden");
-    // const form = document.querySelector(".form");
+    const form = document.querySelector(".form");
+    // console.log(e.target.element.task.value);
+    console.log("calling todo");
+    toDo(form);
     // // set values to default
     // form.task.value = "";
     // form.description.value = "";
