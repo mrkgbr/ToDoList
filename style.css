@@ -21,6 +21,12 @@ body {
 
 .todo {
   background-color: aquamarine;
+  min-width: 450px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .sidebar {
@@ -80,4 +86,24 @@ textarea {
 #cancel {
   background-color: red;
   color: white;
+}
+
+.task-container {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.task-title {
+  flex: 1 0 200px;
+}
+
+.task-description {
+  flex: 0 0 100px;
+}
+.task-date {
+  flex: 0 0 100px;
 }
