@@ -1,12 +1,5 @@
 const body = document.querySelector("body");
 
-export default function createStructure() {
-  createSidebar();
-  // createHeader();
-  createTodo();
-  createForm();
-}
-
 // function createHeader() {
 //   const div = document.createElement("div");
 //   div.classList.add("header");
@@ -16,7 +9,6 @@ export default function createStructure() {
 function createTodo() {
   const div = document.createElement("div");
   div.classList.add("todo");
-  div.textContent = "This is the todo list"; // for testing
   body.appendChild(div);
 }
 
@@ -94,4 +86,11 @@ function createForm() {
   cancelButton.setAttribute("id", "cancel");
   cancelButton.textContent = "Cancel";
   form.appendChild(cancelButton);
+}
+
+export default function createStructure() {
+  createSidebar();
+  // createHeader();
+  createTodo();
+  createForm();
 }

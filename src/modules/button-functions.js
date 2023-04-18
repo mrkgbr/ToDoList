@@ -1,10 +1,4 @@
-import { toDo } from "./todo";
-
-export default function buttonFunctions() {
-  cancelFunction();
-  addFunction();
-  newFunction();
-}
+import { saveToDo, render } from "./todo";
 
 // function for cancel button
 function cancelFunction() {
@@ -12,7 +6,7 @@ function cancelFunction() {
   cancel.addEventListener("click", (e) => {
     e.preventDefault();
     const formContainer = document.querySelector(".form-container");
-    console.log("done");
+    // console.log("done");
     formContainer.classList.toggle("hidden");
     const form = document.querySelector(".form");
     // set values to default
@@ -30,13 +24,12 @@ function addFunction() {
     const formContainer = document.querySelector(".form-container");
     formContainer.classList.toggle("hidden");
     const form = document.querySelector(".form");
-    // console.log(e.target.element.task.value);
-    console.log("calling todo");
-    toDo(form);
-    // // set values to default
-    // form.task.value = "";
-    // form.description.value = "";
-    // form.datum.value = "";
+    saveToDo(form);
+    // set values to default
+    form.task.value = "";
+    form.description.value = "";
+    form.datum.value = "";
+    render();
   });
 }
 
@@ -47,4 +40,10 @@ function newFunction() {
     const formContainer = document.querySelector(".form-container");
     formContainer.classList.toggle("hidden");
   });
+}
+
+export default function buttonFunctions() {
+  cancelFunction();
+  addFunction();
+  newFunction();
 }
