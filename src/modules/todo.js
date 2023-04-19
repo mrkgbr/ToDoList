@@ -1,7 +1,8 @@
+// get items from local storage
 function parseLocalStorage() {
   return JSON.parse(localStorage.getItem("toDos")) || [];
 }
-
+// render tasks from local storage
 function render() {
   const inbox = document.querySelector(".todo");
   inbox.textContent = "";
@@ -11,7 +12,7 @@ function render() {
       new Task(id, item.task, item.description, item.date, item.completed))();
   });
 }
-
+// creat tasks
 class Task {
   constructor(id, title, description, date, completed) {
     this.id = id;
@@ -22,18 +23,19 @@ class Task {
     this.#create();
   }
 
+  // create task ui and functions
   #create() {
     const inbox = document.querySelector(".todo");
-
+    // task container
     const task = document.createElement("div");
     task.classList.add("task-container");
     task.setAttribute("id", this.id);
     inbox.appendChild(task);
-
+    // task form
     const taskForm = document.createElement("form");
     taskForm.classList.add("task-form");
     task.appendChild(taskForm);
-
+    // task title
     const title = document.createElement("input");
     title.setAttribute("type", "text");
     title.setAttribute("name", "taskTitle");
@@ -41,14 +43,14 @@ class Task {
     title.value = this.title;
     title.classList.add("task-title");
     taskForm.appendChild(title);
-
+    // task description
     const description = document.createElement("textarea");
     description.setAttribute("name", "taskDescription");
     description.readOnly = true;
     description.value = this.description;
     description.classList.add("task-description");
     taskForm.appendChild(description);
-
+    // task date
     const date = document.createElement("input");
     date.setAttribute("type", "date");
     date.setAttribute("name", "taskDate");
@@ -56,7 +58,7 @@ class Task {
     date.value = this.date;
     date.classList.add("task-date");
     taskForm.appendChild(date);
-
+    // task edit button and functions
     const editBtn = document.createElement("input");
     editBtn.setAttribute("type", "submit");
     editBtn.value = "EDIT";
@@ -72,6 +74,7 @@ class Task {
       description.classList.toggle("edit");
       date.readOnly = false;
       date.classList.toggle("edit");
+
       editBtn.addEventListener("click", (event) => {
         event.preventDefault();
         editBtn.value = "EDIT";
@@ -89,7 +92,7 @@ class Task {
         render();
       });
     });
-
+    // task delete button and functions
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "DEL";
     deleteBtn.classList.add("delete-button");
@@ -105,7 +108,7 @@ class Task {
     });
   }
 }
-
+// save new task to the locaL storage
 function saveToDo(form) {
   const toDos = parseLocalStorage();
   const toDo = {
@@ -114,7 +117,6 @@ function saveToDo(form) {
     date: form.datum.value,
     completed: false,
   };
-  // console.log(toDo);
   toDos.push(toDo);
   localStorage.setItem("toDos", JSON.stringify(toDos));
 }
