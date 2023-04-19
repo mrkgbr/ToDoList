@@ -1,7 +1,7 @@
 import { saveToDo, render } from "./todo";
 
 // function for cancel button
-function cancelFunction() {
+function cancelButton() {
   const cancel = document.querySelector("#cancel");
   cancel.addEventListener("click", (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ function cancelFunction() {
 }
 
 // function for add button
-function addFunction() {
+function addButton() {
   const add = document.querySelector("#submit");
   add.addEventListener("click", (e) => {
     e.preventDefault();
@@ -34,16 +34,16 @@ function addFunction() {
 }
 
 // function for new button
-function newFunction() {
-  const newButton = document.querySelector(".new-button");
-  newButton.addEventListener("click", () => {
+function newButton() {
+  const newBtn = document.querySelector(".new-button");
+  newBtn.addEventListener("click", () => {
     const formContainer = document.querySelector(".form-container");
     formContainer.classList.toggle("hidden");
   });
 }
 
 export default function buttonFunctions() {
-  cancelFunction();
-  addFunction();
-  newFunction();
+  cancelButton();
+  addButton();
+  newButton();
 }
