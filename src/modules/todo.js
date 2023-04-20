@@ -12,7 +12,7 @@ function render() {
       new Task(id, item.task, item.description, item.date, item.completed))();
   });
 }
-// creat tasks
+// create tasks
 class Task {
   constructor(id, title, description, date, completed) {
     this.id = id;
@@ -23,14 +23,20 @@ class Task {
     this.#create();
   }
 
-  // create task ui and functions
-  #create() {
-    const inbox = document.querySelector(".todo");
+  createTaskContainer(inbox) {
     // task container
     const task = document.createElement("div");
     task.classList.add("task-container");
     task.setAttribute("id", this.id);
     inbox.appendChild(task);
+    return task;
+  }
+
+  // create task ui and functions
+  #create() {
+    const inbox = document.querySelector(".todo");
+    // task container
+    const task = this.createTaskContainer(inbox);
     // task form
     const taskForm = document.createElement("form");
     taskForm.classList.add("task-form");

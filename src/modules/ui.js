@@ -21,6 +21,10 @@ function createSidebar() {
   newButton.classList.add("new-button");
   newButton.textContent = "Create Task";
   div.appendChild(newButton);
+
+  const projectContainer = document.createElement("div");
+  projectContainer.classList.add("project-container");
+  div.appendChild(projectContainer);
 }
 
 function createForm() {
