@@ -44,6 +44,9 @@ export default class Projects {
     project.classList.add("project");
     project.setAttribute("id", item.name);
     projectContainer.appendChild(project);
+    project.addEventListener("click", () => {
+      console.log(project);
+    });
   }
 
   static newProject(item) {
