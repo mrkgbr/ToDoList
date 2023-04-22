@@ -9,17 +9,25 @@ function render() {
   const toDos = parseLocalStorage();
   toDos.forEach((item, id) => {
     (() =>
-      new Task(id, item.task, item.description, item.date, item.completed))();
+      new Task(
+        id,
+        item.task,
+        item.description,
+        item.date,
+        item.completed,
+        item.project
+      ))();
   });
 }
 // create tasks
 class Task {
-  constructor(id, title, description, date, completed) {
+  constructor(id, title, description, date, completed, project) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.date = date;
     this.completed = completed;
+    this.project = project;
     this.#create();
   }
 
@@ -122,6 +130,7 @@ function saveToDo(form) {
     description: form.description.value,
     date: form.datum.value,
     completed: false,
+    project: "Inbox",
   };
   toDos.push(toDo);
   localStorage.setItem("toDos", JSON.stringify(toDos));
