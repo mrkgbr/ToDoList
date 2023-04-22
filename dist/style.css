@@ -32,6 +32,19 @@ body {
 .sidebar {
   background-color: cadetblue;
   /* grid-area: 1 / 1 / -1 / 2; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 20px;
+}
+
+.sidebar button {
+  width: 100px;
+}
+
+.project-container {
+  align-self: flex-start;
 }
 
 .form-container {
@@ -97,6 +110,7 @@ textarea {
   background-color: white;
   border-radius: 0.5rem;
   padding: 10px;
+  /* max-width: 800px; */
 }
 
 .task-form {
@@ -136,4 +150,13 @@ textarea {
 
 .edit {
   background-color: rgba(159, 159, 159, 0.217);
+}
+
+.project {
+  cursor: pointer;
+  padding: 5px 0px;
+}
+
+.project:hover {
+  opacity: 0.5;
 }
