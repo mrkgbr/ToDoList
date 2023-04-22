@@ -1,4 +1,5 @@
 import { saveToDo, render } from "./todo";
+import Projects from "./projects";
 
 // function for cancel button
 function cancelButton() {
@@ -42,8 +43,22 @@ function newButton() {
   });
 }
 
+// function for project button
+function addProject() {
+  const projectBtn = document.querySelector(".project-button");
+  projectBtn.addEventListener("click", () => {
+    const projectName = prompt("Please enter a project name:", "New Project");
+    const projectObj = {
+      name: projectName,
+      protected: false,
+    };
+    Projects.newProject(projectObj);
+  });
+}
+
 export default function buttonFunctions() {
   cancelButton();
   addButton();
   newButton();
+  addProject();
 }
