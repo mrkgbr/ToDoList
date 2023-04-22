@@ -22,6 +22,11 @@ function createSidebar() {
   newButton.textContent = "Create Task";
   div.appendChild(newButton);
 
+  const addProjectButton = document.createElement("button");
+  addProjectButton.classList.add("project-button");
+  addProjectButton.textContent = "Add Project";
+  div.appendChild(addProjectButton);
+
   const projectContainer = document.createElement("div");
   projectContainer.classList.add("project-container");
   div.appendChild(projectContainer);
@@ -79,6 +84,14 @@ function createForm() {
   datum.setAttribute("id", "datum");
   datum.setAttribute("name", "datum");
   form.appendChild(datum);
+  // add select
+  const select = document.createElement("select");
+  select.setAttribute("id", "project-select");
+  form.appendChild(select);
+  const optionDefault = document.createElement("option");
+  optionDefault.value = "default";
+  optionDefault.textContent = "-";
+  select.appendChild(optionDefault);
   // add button
   const addButton = document.createElement("input");
   addButton.setAttribute("type", "submit");
