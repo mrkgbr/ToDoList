@@ -27,9 +27,7 @@ function addButton() {
     const form = document.querySelector(".form");
     saveToDo(form);
     // set values to default
-    form.task.value = "";
-    form.description.value = "";
-    form.datum.value = "";
+    form.reset();
     render();
   });
 }
