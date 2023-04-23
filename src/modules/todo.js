@@ -130,7 +130,7 @@ function saveToDo(form) {
     description: form.description.value,
     date: form.datum.value,
     completed: false,
-    project: "Inbox",
+    project: form.projectselect.value,
   };
   toDos.push(toDo);
   localStorage.setItem("toDos", JSON.stringify(toDos));
