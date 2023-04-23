@@ -1,3 +1,5 @@
+import { parseLocalStorage, render } from "./todo";
+
 export default class Projects {
   static projects = [
     {
@@ -38,6 +40,8 @@ export default class Projects {
     items.splice(index, 1);
     localStorage.setItem("projectList", JSON.stringify(items));
     document.querySelectorAll(".project")[index].remove();
+    document.querySelectorAll("#project-select option")[index - 1].remove();
+    render();
   }
 
   static createProject(item) {
@@ -76,12 +80,33 @@ export default class Projects {
     }
 
     project.addEventListener("click", () => {
-      console.log(item.name);
+      const localList = parseLocalStorage();
+      if (item.name === "Inbox") {
+        render();
+        return;
+      }
+
+      if (item.name === "Today") {
+        const filteredList = localList.filter((localItem) => {
+          const date = new Date().toJSON();
+          const currentDate = Date.parse(date);
+          const localItemDate = Date.parse(localItem.date);
+          return localItemDate < currentDate;
+        });
+        render(filteredList);
+        return;
+      }
+
+      const filteredList = localList.filter(
+        (localItem) => localItem.project === item.name.toLowerCase()
+      );
+      render(filteredList);
     });
   }
 
   static newProject(item) {
     this.createProject(item);
     this.addProjects(item);
+    render();
   }
 }
