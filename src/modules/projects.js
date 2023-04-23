@@ -8,10 +8,6 @@ export default class Projects {
       name: "Today",
       protected: true,
     },
-    {
-      name: "Late",
-      protected: true,
-    },
   ];
 
   static renderProjects() {
@@ -31,19 +27,42 @@ export default class Projects {
     return items;
   }
 
-  static saveProjects(item) {
+  static addProjects(item) {
     const items = JSON.parse(localStorage.getItem("projectList"));
     items.push(item);
     localStorage.setItem("projectList", JSON.stringify(items));
   }
 
+  static removeProjects(index) {
+    const items = JSON.parse(localStorage.getItem("projectList"));
+    items.splice(index, 1);
+    localStorage.setItem("projectList", JSON.stringify(items));
+    document.querySelectorAll(".project")[index].remove();
+  }
+
   static createProject(item) {
     const projectContainer = document.querySelector(".project-container");
+    const projectItem = document.createElement("div");
+    projectItem.classList.add("project");
+    projectItem.setAttribute("id", item.name);
+    projectContainer.appendChild(projectItem);
     const project = document.createElement("p");
     project.textContent = item.name;
-    project.classList.add("project");
-    project.setAttribute("id", item.name);
-    projectContainer.appendChild(project);
+    projectItem.appendChild(project);
+
+    if (!item.protected) {
+      const projectDelete = document.createElement("button");
+      projectDelete.textContent = "DEL";
+      projectItem.appendChild(projectDelete);
+      projectDelete.addEventListener("click", () => {
+        const projects = this.parseProjects();
+        const index = projects.findIndex(
+          (searchFor) => searchFor.name === item.name
+        );
+        this.removeProjects(index);
+      });
+    }
+
     if (
       item.name !== "Inbox" &&
       item.name !== "Today" &&
@@ -55,13 +74,14 @@ export default class Projects {
       newOption.textContent = item.name;
       select.appendChild(newOption);
     }
+
     project.addEventListener("click", () => {
-      console.log(project);
+      console.log(item.name);
     });
   }
 
   static newProject(item) {
     this.createProject(item);
-    this.saveProjects(item);
+    this.addProjects(item);
   }
 }
