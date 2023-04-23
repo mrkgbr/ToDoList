@@ -46,6 +46,9 @@ function addProject() {
   const projectBtn = document.querySelector(".project-button");
   projectBtn.addEventListener("click", () => {
     const projectName = prompt("Please enter a project name:", "New Project");
+    if (!projectName) {
+      return;
+    }
     const projectObj = {
       name: projectName,
       protected: false,
