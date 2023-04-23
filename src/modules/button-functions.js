@@ -22,9 +22,13 @@ function addButton() {
   const add = document.querySelector("#submit");
   add.addEventListener("click", (e) => {
     e.preventDefault();
+    const form = document.querySelector(".form");
+    if (!form.task.value || !form.datum.value) {
+      alert("Please add Title and Due date!");
+      return;
+    }
     const formContainer = document.querySelector(".form-container");
     formContainer.classList.toggle("hidden");
-    const form = document.querySelector(".form");
     saveToDo(form);
     // set values to default
     form.reset();
