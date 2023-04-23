@@ -5,5 +5,5 @@ import Projects from "./modules/projects";
 
 createStructure();
 buttonFunctions();
-render();
 Projects.renderProjects();
+render();
