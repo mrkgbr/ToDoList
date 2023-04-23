@@ -87,11 +87,13 @@ function createForm() {
   // add select
   const select = document.createElement("select");
   select.setAttribute("id", "project-select");
+  select.setAttribute("name", "projectselect");
   form.appendChild(select);
   const optionDefault = document.createElement("option");
   optionDefault.value = "default";
   optionDefault.textContent = "-";
   select.appendChild(optionDefault);
+
   // add button
   const addButton = document.createElement("input");
   addButton.setAttribute("type", "submit");
