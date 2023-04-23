@@ -44,6 +44,17 @@ export default class Projects {
     project.classList.add("project");
     project.setAttribute("id", item.name);
     projectContainer.appendChild(project);
+    if (
+      item.name !== "Inbox" &&
+      item.name !== "Today" &&
+      item.name !== "Late"
+    ) {
+      const select = document.querySelector("#project-select");
+      const newOption = document.createElement("option");
+      newOption.value = item.name.toLowerCase();
+      newOption.textContent = item.name;
+      select.appendChild(newOption);
+    }
     project.addEventListener("click", () => {
       console.log(project);
     });
