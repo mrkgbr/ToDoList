@@ -182,7 +182,7 @@ class Task {
 
     // task delete button and functions
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "DEL";
+    deleteBtn.textContent = "DONE";
     deleteBtn.classList.add("delete-button");
     taskForm.appendChild(deleteBtn);
 
