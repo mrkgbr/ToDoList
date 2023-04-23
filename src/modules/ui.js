@@ -1,11 +1,5 @@
 const body = document.querySelector("body");
 
-// function createHeader() {
-//   const div = document.createElement("div");
-//   div.classList.add("header");
-//   body.appendChild(div);
-// }
-
 function createTodo() {
   const div = document.createElement("div");
   div.classList.add("todo");
@@ -41,7 +35,6 @@ function createForm() {
   // add container div
   const main = document.createElement("div");
   main.classList.add("form-main");
-  // container.classList.add("hidden");
   container.appendChild(main);
 
   // add form
@@ -84,6 +77,7 @@ function createForm() {
   datum.setAttribute("id", "datum");
   datum.setAttribute("name", "datum");
   form.appendChild(datum);
+
   // add select
   const select = document.createElement("select");
   select.setAttribute("id", "project-select");
@@ -93,6 +87,24 @@ function createForm() {
   optionDefault.value = "default";
   optionDefault.textContent = "-";
   select.appendChild(optionDefault);
+
+  // add priority
+  const prioritySelect = document.createElement("select");
+  prioritySelect.setAttribute("id", "priority-select");
+  prioritySelect.setAttribute("name", "priorityselect");
+  form.appendChild(prioritySelect);
+  const optionOne = document.createElement("option");
+  optionOne.value = "1";
+  optionOne.textContent = "1";
+  prioritySelect.appendChild(optionOne);
+  const optionTwo = document.createElement("option");
+  optionTwo.value = "2";
+  optionTwo.textContent = "2";
+  prioritySelect.appendChild(optionTwo);
+  const optionThree = document.createElement("option");
+  optionThree.value = "3";
+  optionThree.textContent = "3";
+  prioritySelect.appendChild(optionThree);
 
   // add button
   const addButton = document.createElement("input");
