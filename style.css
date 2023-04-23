@@ -45,6 +45,7 @@ body {
 
 .project-container {
   align-self: flex-start;
+  width: 100%;
 }
 
 .form-container {
@@ -153,10 +154,19 @@ textarea {
 }
 
 .project {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project button {
+  flex: 50px 0 0;
+}
+
+.project > p {
   cursor: pointer;
   padding: 5px 0px;
 }
 
-.project:hover {
+.project > p:hover {
   opacity: 0.5;
 }
