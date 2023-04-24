@@ -111,6 +111,7 @@ class Task {
     // task description
     const description = document.createElement("textarea");
     description.setAttribute("name", "taskDescription");
+    description.setAttribute("rows", 1);
     description.value = this.description;
     description.classList.add("task-description");
     description.readOnly = true;
@@ -141,15 +142,29 @@ class Task {
       projectSelect.appendChild(newOption);
     });
 
+    function disableButtons(itemId) {
+      const selectForm = document.querySelectorAll(".task-form");
+      selectForm.forEach((item, id) => {
+        if (itemId !== id) {
+          const selectEdit = item.querySelector(".edit-button");
+          selectEdit.disabled = true;
+          const selectDelete = item.querySelector(".delete-button");
+          selectDelete.disabled = true;
+        }
+      });
+    }
+
     // task edit button and functions
     const editBtn = document.createElement("input");
     editBtn.setAttribute("type", "submit");
     editBtn.value = "EDIT";
     editBtn.classList.add("edit-button");
+    editBtn.classList.add("task-button");
     taskForm.appendChild(editBtn);
 
     editBtn.addEventListener("click", (e) => {
       e.preventDefault();
+      disableButtons(this.listId);
       editBtn.value = "SAVE";
       title.readOnly = false;
       title.classList.toggle("edit");
@@ -184,6 +199,7 @@ class Task {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "DONE";
     deleteBtn.classList.add("delete-button");
+    deleteBtn.classList.add("task-button");
     taskForm.appendChild(deleteBtn);
 
     deleteBtn.addEventListener("click", (del) => {
