@@ -208,7 +208,7 @@ class Task {
       data.splice(this.id, 1);
       document.querySelectorAll(".task-container")[this.listId].remove();
       localStorage.setItem("toDos", JSON.stringify(data));
-      // render();
+      render();
     });
   }
 }
